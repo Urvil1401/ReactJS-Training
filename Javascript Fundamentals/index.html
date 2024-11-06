@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>DOM Manipulation Demo</h1>
+
+    <div id="main-container">
+        <p id="intro-text">Hello, welcome to DOM manipulation!</p>
+        <button id="change-text-btn">Change Text</button>
+        <button id="add-element-btn">Add New Element</button>
+        <button id="toggle-color-btn">Toggle Background Color</button>
+    </div>
+
+</body>
+<script>
+
+    const introText = document.getElementById('intro-text');
+    const changeTextBtn = document.getElementById('change-text-btn');
+    const addElementBtn = document.getElementById('add-element-btn');
+    const toggleColorBtn = document.getElementById('toggle-color-btn');
+    const mainContainer = document.getElementById('main-container');
+
+    changeTextBtn.addEventListener('click', () => {
+        introText.textContent = 'You have changed the text!';
+    });
+
+
+    addElementBtn.addEventListener('click', () => {
+        const newElement = document.createElement('p');
+        newElement.textContent = 'This is a new element added dynamically.';
+        mainContainer.appendChild(newElement);
+    });
+
+    toggleColorBtn.addEventListener('click', () => {
+        if (mainContainer.style.backgroundColor === 'lightblue') {
+            mainContainer.style.backgroundColor = '';
+        } else {
+            mainContainer.style.backgroundColor = 'lightblue';
+        }
+    });
+    
+    const allButtons = document.querySelectorAll('button'); 
+    allButtons.forEach((button) => {
+        button.style.padding = '10px';  
+    });
+
+    introText.addEventListener('mouseover', () => {
+        introText.style.color = 'red'; 
+    });
+
+    introText.addEventListener('mouseout', () => {
+        introText.style.color = 'green'; 
+    });
+
+    console.log('Parent of intro-text:', introText.parentNode);
+    console.log('Child nodes of main-container:', mainContainer.childNodes); 
+
+    const nextButton = changeTextBtn.nextElementSibling; 
+    console.log('Next button after Change Text:', nextButton.textContent);
+
+    const textNode = document.createTextNode('This is a text node.');
+    document.body.appendChild(textNode); 
+
+</script>
+</html>
